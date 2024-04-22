@@ -1,3 +1,3 @@
 #!/bin/bash
 DATE=$(date)
-echo"tody date is $DATE"
+echo "today date is $DATE"
