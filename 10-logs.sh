@@ -1,8 +1,8 @@
 #!/bin/bash
 ID=$(id -u)
-RED="\033[31m"
-GREEN="\033[32m"
-NORMAL="\033[0m"
+RED="\e[31m"
+GREEN="\e[31m"
+NORMAL="\e[0m"
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOGFILE=/tmp/$0_$TIMESTAMP.log
 echo "current time is $TIMESTAMP"
