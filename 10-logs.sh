@@ -9,14 +9,14 @@ echo "current time is $TIMESTAMP"
 VALIDATE(){
 if [ $1 -ne 0 ]
 then
-echo "Error: $2 $RED failed "
+echo -e "Error: $2 $RED failed "
 else
-echo "$2 $GREEN success"
+echo -e "$2 $GREEN success"
 fi
 }
 if [ $ID -ne 0 ]
 then
-echo "$RED ERROR: not a root user"
+echo -e "$RED ERROR: not a root user"
 exit 1
 else
 echo "root user"
