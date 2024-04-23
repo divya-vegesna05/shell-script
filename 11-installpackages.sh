@@ -21,10 +21,10 @@ echo "root user"
 fi
 for package in $@ 
 do 
-yum list installed $package &>>LOGFILE
+yum list installed $package &>> $LOGFILE
 if [ $? -ne 0 ]
 then
-yum install $package -y &>>LOGFILE
+yum install $package -y &>> $LOGFILE
 else
 echo -e "$package already installed $YELLOW skipping..."
 fi
