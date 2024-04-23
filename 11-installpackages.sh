@@ -15,17 +15,17 @@ VALIDATE(){
 }
 if [ $ID -ne 0 ]
 then
-echo "ERROR: please use root access" 
+echo -e "$RED ERROR: please use root access" 
 else
 echo "root user"
 fi
 for package in $@ 
 do 
-yum list installed $package
+yum list installed $package &>>LOGFILE
 if [ $? -ne 0 ]
 then
-yum install $package -y
+yum install $package -y &>>LOGFILE
 else
-echo "$package already installed $YELLOW skipping..."
+echo -e "$package already installed $YELLOW skipping..."
 fi
 done
