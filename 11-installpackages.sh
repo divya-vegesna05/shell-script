@@ -19,7 +19,7 @@ echo "ERROR: please use root access"
 else
 echo "root user"
 fi
-for(i in $@)
+for i in $@ 
 do 
 yum list installed $package
 if [ $? -ne 0 ]
