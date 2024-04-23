@@ -1,7 +1,7 @@
 #!/bin/bash
 ID=$(id -u)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-LOGFILE="/tmp/$0_$TIMESTAMP.log
+LOGFILE="/tmp/$0_$TIMESTAMP.log"
 RED="\e[31m"
 GREEN="\e[31m"
 YELLOW="\e[33m"
