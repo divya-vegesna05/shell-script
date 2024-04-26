@@ -23,7 +23,7 @@ aws route53 change-resource-record-sets \
     ,"Changes": [{
       "Action"              : "CREATE"
       ,"ResourceRecordSet"  : {
-        "Name"              : "'$recordname'.'$DOMAIN_NAME'"
+        "Name"              : "'$i'.'$DOMAIN_NAME'"
         ,"Type"             : "CNAME"
         ,"TTL"              : 1
         ,"ResourceRecords"  : [{
