@@ -29,6 +29,6 @@ while getopts "n:w:h" option; do
 done
 if [ -z "$NAME" ] || [ -z "$WISHES" ]
 then
-echo "$NAME $WISHES not empty"
+echo "error values NAME WISHES not empty"
 fi
 echo "Hello $NAME  $WISHES"
