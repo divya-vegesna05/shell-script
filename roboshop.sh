@@ -15,25 +15,22 @@ else
 fi
 PrivateIpAddress=$(aws ec2 run-instances --image-id $AMI_IMAGE --count 1 --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text)
 echo $i:$PrivateIpAddress
-aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file://<(cat << EOF
-{
-  "Comment": "Testing creating a record set",
-  "Changes": [
-    {
-      "Action": "CREATE",
-      "ResourceRecordSet": {
-        "Name": "${i}.$DOMAIN_NAME",
-        "Type": "CNAME",
-        "TTL": 1,
-        "ResourceRecords": [
-          {
-            "Value": "${PrivateIpAddress}"
-          }
-        ]
+aws route53 change-resource-record-sets \
+  --hosted-zone-id $ZONE_ID \
+  --change-batch '
+  {
+    "Comment": "Testing creating a record set"
+    ,"Changes": [{
+      "Action"              : "CREATE"
+      ,"ResourceRecordSet"  : {
+        "Name"              : "$i.$DOMAIN_NAME"
+        ,"Type"             : "CNAME"
+        ,"TTL"              : 1
+        ,"ResourceRecords"  : [{
+            "Value"         : "${PrivateIpAddress}"
+        }]
       }
-    }
-  ]
-}
-EOF
-)
+    }]
+  }
+  '
 done
