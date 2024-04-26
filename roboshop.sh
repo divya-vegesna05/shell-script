@@ -47,6 +47,8 @@ while [ "$PublicIpAddress" == "none" ]; do
         --instance-ids $instance_id \
         --query 'Reservations[0].Instances[0].PublicIpAddress' \
         --output text)
+done
+echo "Instance launched with public IP address: $PublicIpAddress"
 aws route53 change-resource-record-sets \
   --hosted-zone-id $ZONE_ID \
   --change-batch '
