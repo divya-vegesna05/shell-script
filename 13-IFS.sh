@@ -4,7 +4,7 @@ RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
 NORMAL="\e[0m"
-if [ ! -d $SOURCE_DIR ]
+if [ ! -f $SOURCE_DIR ]
 then
 echo "$RED ERROR: $SOURCE_DIR doesnot exist $NORMAL"
 fi
