@@ -5,7 +5,7 @@ GREEN="\e[32m"
 YELLOW="\e[33m"
 NORMAL="\e[0m"
 USAGE(){
-    echo -e "USAGE: basename $0 -n <name> -w <wishes>\n"
+    echo -e "USAGE: $basename $0 -n <name> -w <wishes>\n"
     echo "options"
     echo "-n (mandtaory)"
     echo "-w (mandatory)"
@@ -14,11 +14,9 @@ while getopts "n:w:h" option; do
   case $option in
     n)
       NAME=$OPTARG
-      echo "Option a is set with argument: $OPTARG"
       ;;
     w)
       WISHES=$OPTARG
-      echo "Option b is set"
       ;;
     h)
       USAGE
@@ -30,4 +28,4 @@ while getopts "n:w:h" option; do
       ;;
   esac
 done
-echo "Hello $NAME  $WISHES"
+echo "Hello" $NAME  $WISHES"
