@@ -12,7 +12,8 @@ USAGE=$(echo $line | awk '{print $6F}' | cut -d % -f1)
 PARTITION=$(echo $line | awk '{print $1F}')
 if [ $USAGE -gt $DISK_THRESHOLD ]
 then
-message+="High Disk Usage on partition $PARTITION is $USAGE\n"
+message+="$RED High Disk Usage on partition $PARTITION is $USAGE\n $NORMAL"
 fi
 done <<<$DISK_USAGE
-echo -e "message:$message"
+#echo -e "message:$message"
+echo -e $message | mail -s "ALERT: HIGH DISK USAGE" divya.vegesna55@gmail.com
