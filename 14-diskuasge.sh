@@ -6,7 +6,7 @@ GREEN="\e[32m"
 YELLOW="\e[33m"
 NORMAL="\e[0m"
 message=""
-while IFS= read -r line
+while IFS= read line
 do
 USAGE=$(echo $line | awk '{print $6F}' | cut -d % -f1)
 PARTITION=$(echo $line | awk '{print $1F}')
