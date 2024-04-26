@@ -23,14 +23,13 @@ aws route53 change-resource-record-sets \
     ,"Changes": [{
       "Action"              : "CREATE"
       ,"ResourceRecordSet"  : {
-        "Name"              : "$i.$DOMAIN_NAME"
+        "Name"              : "'$recordname'.'$DOMAIN_NAME'"
         ,"Type"             : "CNAME"
         ,"TTL"              : 1
         ,"ResourceRecords"  : [{
-            "Value"         : "${PrivateIpAddress}"
+            "Value"         : "'$PrivateIpAddress'"
         }]
       }
     }]
-  }
-  '
+  }'
 done
