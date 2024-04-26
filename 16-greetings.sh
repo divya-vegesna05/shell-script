@@ -30,5 +30,6 @@ done
 if [ -z "$NAME" ] || [ -z "$WISHES" ]
 then
 echo "error values NAME WISHES not empty"
-fi
+else
 echo "Hello $NAME  $WISHES"
+fi
