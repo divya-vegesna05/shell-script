@@ -8,7 +8,7 @@ NORMAL="\e[0m"
 message=""
 while IFS= read -r line
 do
-USAGE=$($line | awk '{print $6F}' | cut -d % -f1)
+USAGE=$(echo $line | awk '{print $6F}' | cut -d % -f1)
 PARTITION=$(echo $line | awk '{print $1F}')
 if [ $USAGE -gt $DISK_THRESHOLD ]
 then
