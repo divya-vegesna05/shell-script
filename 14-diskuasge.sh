@@ -15,6 +15,6 @@ then
 message+="$RED High Disk Usage on partition $PARTITION is $USAGE\n $NORMAL"
 fi
 done <<<$DISK_USAGE
-#echo -e "message:$message"
+echo -e "message:$message"
 #echo -e "$message" | mail -s "ALERT: HIGH DISK USAGE" divya.vegesna55@gmail.com
-sh 15-mail.sh devops-team diskALERT $message diskusage "divya.vegesna55@gmail.com"
+sh 15-mail.sh "devops-team" "diskALERT" "$message" "highdiskusage" "divya.vegesna55@gmail.com"
