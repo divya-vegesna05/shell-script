@@ -24,7 +24,7 @@ aws route53 change-resource-record-sets \
       "Action"              : "CREATE"
       ,"ResourceRecordSet"  : {
         "Name"              : "'$i'.'$DOMAIN_NAME'"
-        ,"Type"             : "CNAME"
+        ,"Type"             : "A"
         ,"TTL"              : 1
         ,"ResourceRecords"  : [{
             "Value"         : "'$PrivateIpAddress'"
