@@ -5,7 +5,7 @@ SUBNET_ID="subnet-042abd3162d58609f"
 INSTANCES=("web","cart","catalogue","shipping","user","mysql")
 for i in ${INSTANCES[@]}
 do
-if [ $i=="mysql" || $i=="shipping" ]
+if [ $i=="mysql" || $i=="shipping" ];
 then
 INSTANCE_TYPE="t3.small"
 else
