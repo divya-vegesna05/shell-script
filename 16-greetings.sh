@@ -27,7 +27,7 @@ while getopts "n:w:h" option; do
       ;;
   esac
 done
-if [ -z "$NAME" ] || [ -z "$WISHES" ]
+if [ -z "$NAME" ] 
 then
 echo "error values NAME WISHES not empty"
 else
