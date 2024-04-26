@@ -28,4 +28,4 @@ while getopts "n:w:h" option; do
       ;;
   esac
 done
-echo "Hello" $NAME  $WISHES"
+echo "Hello $NAME  $WISHES"
