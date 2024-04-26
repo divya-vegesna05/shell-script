@@ -36,9 +36,17 @@ aws route53 change-resource-record-sets \
     }]
   }'
 else
+sleep 30;
 PublicIpAddress=$(aws ec2 run-instances --image-id $AMI_IMAGE --count 1 --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PublicIpAddress' \
     --output text)
 echo $i:$PublicIpAddress
+PublicIpAddress="none"
+while [ "$PublicIpAddress" == "none" ]; do
+    sleep 5  # Wait for 5 seconds before checking again
+    PublicIpAddress=$(aws ec2 describe-instances \
+        --instance-ids $instance_id \
+        --query 'Reservations[0].Instances[0].PublicIpAddress' \
+        --output text)
 aws route53 change-resource-record-sets \
   --hosted-zone-id $ZONE_ID \
   --change-batch '
