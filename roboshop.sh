@@ -18,6 +18,7 @@ if [ "$i" != "web" ]
 then
 PrivateIpAddress=$(aws ec2 run-instances --image-id $AMI_IMAGE --count 1 --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text)
 echo $i:$PrivateIpAddress
+aws route53 list-resource-record-sets --hosted-zone-id Z2LD58HEXAMPLE
 aws route53 change-resource-record-sets \
   --hosted-zone-id $ZONE_ID \
   --change-batch '
@@ -39,7 +40,6 @@ else
 sleep 30;
 PublicIpAddress=$(aws ec2 run-instances --image-id $AMI_IMAGE --count 1 --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PublicIpAddress' \
     --output text)
-echo $i:$PublicIpAddress
 PublicIpAddress="none"
 while [ "$PublicIpAddress" == "none" ]; do
     sleep 5  # Wait for 5 seconds before checking again
@@ -48,7 +48,7 @@ while [ "$PublicIpAddress" == "none" ]; do
         --query 'Reservations[0].Instances[0].PublicIpAddress' \
         --output text)
 done
-echo "Instance launched with public IP address: $PublicIpAddress"
+echo "Instance $i launched with public IP address: $PublicIpAddress"
 aws route53 change-resource-record-sets \
   --hosted-zone-id $ZONE_ID \
   --change-batch '
