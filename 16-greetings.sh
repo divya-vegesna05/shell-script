@@ -1,11 +1,10 @@
 #!/bin/bash
-SOURCE_FILE="/etc/passwd"
 RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
 NORMAL="\e[0m"
 USAGE(){
-    echo -e "USAGE: $basename $0 -n <name> -w <wishes>\n"
+    echo -e "USAGE: $(basename $0) -n <name> -w <wishes>\n"
     echo "options"
     echo "-n (mandtaory)"
     echo "-w (mandatory)"
@@ -28,4 +27,7 @@ while getopts "n:w:h" option; do
       ;;
   esac
 done
+if [ -z "$NAME" ] || [ -z "$WISHES" ]
+then
+echo "$NAME $WISHES not empty"
 echo "Hello $NAME  $WISHES"
