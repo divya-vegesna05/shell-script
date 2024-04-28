@@ -7,7 +7,7 @@ ZONE_ID=Z07231219S408J0QGA3I
 DOMAIN_NAME="jasritha.tech"
 for i in "${INSTANCES[@]}"
 do
-if [ $i == "mysql" ] || [ $i == "shipping" ] [ $i == "mongodb" ]
+if [ $i == "mysql" ] || [ $i == "shipping" ] || [ $i == "mongodb" ]
 then
     INSTANCE_TYPE="t3.small"
 else
