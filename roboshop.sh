@@ -16,7 +16,7 @@ fi
 
 if [ "$i" != "web" ]
 then
-#PrivateIpAddress=$(aws ec2 run-instances --image-id $AMI_IMAGE --count 1 --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text)
+PrivateIpAddress=$(aws ec2 run-instances --image-id $AMI_IMAGE --count 1 --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text)
 echo $i:$PrivateIpAddress
 aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID
 aws route53 change-resource-record-sets \
