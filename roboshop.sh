@@ -2,8 +2,8 @@
 AMI_IMAGE=ami-0f3c7d07486cad139
 SG_ID=sg-0e0ea845438880613
 SUBNET_ID="subnet-042abd3162d58609f"
-INSTANCES=("catalogue" "user" "mongodb" "redis" "cart")
-#INSTANCES=("web" "cart" "catalogue" "shipping" "user" "mysql" "mongodb" "payment" "redis" "rabbitmq")
+#INSTANCES=("catalogue" "user" "mongodb" "redis" "cart")
+INSTANCES=("web" "cart" "catalogue" "shipping" "user" "mysql" "mongodb" "payment" "redis" "rabbitmq" "dispatch")
 ZONE_ID=Z07231219S408J0QGA3I
 DOMAIN_NAME="jasritha.tech"
 for i in "${INSTANCES[@]}"
@@ -26,7 +26,7 @@ aws route53 change-resource-record-sets \
   {
     "Comment": "Testing creating a record set"
     ,"Changes": [{
-      "Action"              : "CREATE"
+      "Action"              : "UPSERT"
       ,"ResourceRecordSet"  : {
         "Name"              : "'$i'.'$DOMAIN_NAME'"
         ,"Type"             : "A"
@@ -56,7 +56,7 @@ aws route53 change-resource-record-sets \
   {
     "Comment": "Testing creating a record set"
     ,"Changes": [{
-      "Action"              : "CREATE"
+      "Action"              : "UPSERT"
       ,"ResourceRecordSet"  : {
         "Name"              : "'$i'.'$DOMAIN_NAME'"
         ,"Type"             : "A"
